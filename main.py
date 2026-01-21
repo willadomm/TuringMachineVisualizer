@@ -1,5 +1,8 @@
+import turingmachine
+
+
 def main():
-    pass
+    turingmachine.TuringMachine(None,None,None,None,None,None,None, "0011")
 
 
 main()
