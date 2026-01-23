@@ -1,9 +1,12 @@
+import transitionsdict
+
 class TuringMachine:
     def __init__(self, states, inputalphabet, tapealphabet, transitions, startstate, endstate, rejectstate, string):
         self.states = states
         self.inputalphabet = inputalphabet
         self.tapealphabet = tapealphabet
         self.transitions = transitions
+        self.transdict = {}
         self.startstate = startstate
         self.endstate = endstate
         self.rejectstate = rejectstate
@@ -12,16 +15,20 @@ class TuringMachine:
         self.leftend = '|-'
         self.rightend = '-|'
         self.currentstate = self.startstate
-        self.headlocation = 0
+        self.headlocation = 1
         self.tape = []
+        self.transitionsdict()
         self.createtape()
     
-    def primitiveprint(self):
+    def tapedisplay(self):
         printable = ""
+        sizeoftape = 0
         for character in self.tape:
             if character != '_':
                 printable += character
-        print(printable)
+                sizeoftape += 1
+        ontopprintstring = " " * (self.headlocation + 1)+ "^" + " " * (sizeoftape -self.headlocation)
+        print(printable + "\n" + ontopprintstring)
 
     
     def createtape(self):
@@ -34,7 +41,12 @@ class TuringMachine:
             tapecounter += 1
         self.tape = blanktape
 
-        self.primitiveprint()
+        self.tapedisplay()
+
+    def transitionsdict(self):
+        for transition in self.transitions:
+            self.transdict[tuple(transition[0:2])] = tuple(transition[2:])
+        
 
 
 
