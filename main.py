@@ -3,7 +3,7 @@ import turingmachine
 
 def main():
     listoftransitions = [] 
-    listofstates = ["q0", "q1", "q2"]
+    listofstates = ["q0", "q1"]
     inputalphabet = ["0", "1"]
     tapealphabet = ["0", "1"]
 
