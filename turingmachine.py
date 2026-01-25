@@ -48,6 +48,7 @@ class TuringMachine:
 
         print("Enter a C instead of enter at any time to end the visualizer. (Very useful if the machine is not total)")
         print("Enter 'ff x' to fast forward through x transitions. ")
+        print("Enter ff to skip to the end (Be careful when using a non-total TM!)")
 
         time.sleep(2)
         
@@ -60,13 +61,15 @@ class TuringMachine:
         
         print("Tape:")
         print()
-        time.sleep(0.5)
+        if (self.timecontrol != "ff"):
+            time.sleep(0.5)
         self.tapedisplay()
 
         print("Current state: " + self.currentstate)
         print("Current character: " + self.tape[self.headlocation])
 
-        time.sleep(0.5)
+        if (self.timecontrol != "ff"):
+            time.sleep(0.5)
         print()
 
         transition = (self.currentstate, self.tape[self.headlocation])
