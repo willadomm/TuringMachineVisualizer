@@ -16,6 +16,8 @@ class TuringMachine:
         self.currentstate = self.startstate
         self.headlocation = 1
         self.tape = []
+        self.timecontrol = "N"
+        self.fastfowardint = None
         self.transitionsdict()
         self.createtape()
         self.mainloop()
@@ -45,6 +47,7 @@ class TuringMachine:
         self.tapedisplay()
 
         print("Enter a C instead of enter at any time to end the visualizer. (Very useful if the machine is not total)")
+        print("Enter 'ff x' to fast forward through x transitions. ")
 
         time.sleep(2)
         
@@ -80,15 +83,37 @@ class TuringMachine:
             self.headlocation = self.headlocation - 1
         
         print()
-        
+
         if(self.currentstate == self.endstate):
-            print("End Reached!")
+            print("Acceptance state reached.")
+            print("Your string is in the language!")
             print("Final Tape: ")
             self.tapedisplay()
             exit()
 
 
-        timecontrol = input("Press enter to see the next step. ")
+        if (self.headlocation == len(self.tape) -1):
+            newblankarray = ["_"] * len(self.tape)
+            self.tape.extend(newblankarray)
+
+        if isinstance(self.fastfowardint, int):
+            self.fastfowardint = self.fastfowardint - 1
+            if self.fastfowardint == 0:
+                self.timecontrol = "N"
+
+        
+        
+        if self.timecontrol != "ff":
+            self.timecontrol = input("Press enter to see the next step. ")
+        
+        if self.timecontrol == "C":
+            print("Halted by user.")
+            exit()
+        elif " " in self.timecontrol:
+            if self.timecontrol.split()[1].isnumeric():
+                self.fastfowardint = int(self.timecontrol.split()[1])
+                self.timecontrol = "ff"
+        
         print()
         self.mainloop()
 
