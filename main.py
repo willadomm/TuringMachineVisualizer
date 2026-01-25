@@ -1,15 +1,24 @@
 import turingmachine
-
+import machinecreation
 
 def main():
-    listoftransitions = [] 
-    listofstates = ["q0", "q1"]
-    inputalphabet = ["0", "1"]
-    tapealphabet = ["0", "1"]
+    
+    print("Welcome to the Turing Machine Visualizer. Enter the corresponding number to visualize that TM.")
+    print("1. L = any string in the alphabet (0, 1)\u02df that contains at least one 1. ")
+    
+    
+    choiceint = " "
 
-    listoftransitions.append(["q0", "0", "q0", "0", "R"])
-    listoftransitions.append(["q0","1", "q1", "1", "R"])
-    turingmachine.TuringMachine(listofstates,inputalphabet,tapealphabet,listoftransitions,"q0","q1",None, "0011")
+    while not choiceint.isnumeric() or choiceint != "1":
+        choiceint = input("Type Here: ")
+        if choiceint.isnumeric == False or choiceint != "1":
+            print("Please enter a valid number")
+
+    match choiceint:
+        case "1":
+            machinecreation.one1machine()
+    
+
 
 
 main()

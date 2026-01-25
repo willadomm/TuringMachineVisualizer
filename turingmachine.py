@@ -1,7 +1,7 @@
 import time
 
 class TuringMachine:
-    def __init__(self, states, inputalphabet, tapealphabet, transitions, startstate, endstate, rejectstate, string):
+    def __init__(self, states, inputalphabet, tapealphabet, transitions, startstate, endstate, rejectstate, startingstring):
         self.states = states
         self.inputalphabet = inputalphabet
         self.tapealphabet = tapealphabet
@@ -10,7 +10,7 @@ class TuringMachine:
         self.startstate = startstate
         self.endstate = endstate
         self.rejectstate = rejectstate
-        self.string = string
+        self.startingstring = startingstring
         self.blanksymbol = '_'
         self.leftend = '|-'
         self.currentstate = self.startstate
@@ -36,23 +36,25 @@ class TuringMachine:
         blanktape[0] = self.leftend
         blanktape[1:1000] = self.blanksymbol * 999
         tapecounter = 1
-        for character in self.string:
+        for character in self.startingstring:
             blanktape[tapecounter] = character
             tapecounter += 1
         self.tape = blanktape
 
-        #self.tapedisplay()
+        print("Initial Tape: ")
+        self.tapedisplay()
+
+        print("Enter a C instead of enter at any time to end the visualizer. (Very useful if the machine is not total)")
+
+        time.sleep(2)
+        
 
     def transitionsdict(self):
         for transition in self.transitions:
             self.transdictobj[tuple(transition[0:2])] = tuple(transition[2:])
     
     def mainloop(self):
-        if(self.currentstate == self.endstate):
-            print("End Reached!")
-            print("Final Tape: ")
-            self.tapedisplay()
-            exit()
+        
         print("Tape:")
         print()
         time.sleep(0.5)
@@ -74,9 +76,20 @@ class TuringMachine:
         self.tape[self.headlocation] = self.transdictobj[transition][1]
         if (self.transdictobj[transition][2] == "R"):
             self.headlocation += 1
-        else:
+        elif (self.transdictobj[transition][2] == "L"):
             self.headlocation = self.headlocation - 1
         
+        print()
+        
+        if(self.currentstate == self.endstate):
+            print("End Reached!")
+            print("Final Tape: ")
+            self.tapedisplay()
+            exit()
+
+
+        timecontrol = input("Press enter to see the next step. ")
+        print()
         self.mainloop()
 
         
