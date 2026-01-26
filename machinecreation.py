@@ -1,5 +1,19 @@
 import turingmachine
 
+
+def correctalphabetchecker(tapealphabet):
+    properstring = False
+    while properstring == False:
+        stringinput = input("Please enter the string to be determined by the machine: ")
+        properstring = True
+        for char in stringinput:
+            if char not in tapealphabet:
+                properstring = False
+                print("Please enter a string in the alphabet of the machine")
+
+    return stringinput
+
+
 def one1machine():
 
     listoftransitions = [] 
@@ -11,17 +25,9 @@ def one1machine():
     listoftransitions.append(["q0","1", "q1", "1", "R"])
     listoftransitions.append(["q0", "_", "q0", "0", "R"])
 
-    properstring = False
-
-    while properstring == False:
-        stringinput = input("Please enter the string to be determined by the machine: ")
-        properstring = True
-        for char in stringinput:
-            if char not in tapealphabet:
-                properstring = False
-                print("Please enter a string in the alphabet of the machine")
     
-    string = stringinput
+    
+    string = correctalphabetchecker(inputalphabet)
     
 
    
