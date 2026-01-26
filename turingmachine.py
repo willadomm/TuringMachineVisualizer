@@ -24,12 +24,19 @@ class TuringMachine:
     
     def tapedisplay(self):
         printable = ""
-        sizeoftape = 0
         for character in self.tape:
-            if character != '_':
                 printable += character
-                sizeoftape += 1
-        ontopprintstring = " " * (self.headlocation + 1)+ "^" + " " * (sizeoftape -self.headlocation)
+        printable = printable[::-1]
+
+        while (printable[0] == "_"):
+            printable = printable[1:]
+
+        printable = printable[::-1]
+
+
+        
+        
+        ontopprintstring = " " * (self.headlocation + 1)+ "^" + " " * (len(printable) -self.headlocation)
         print(printable + "\n" + ontopprintstring)
 
     
@@ -76,7 +83,8 @@ class TuringMachine:
 
         print("Changing to state " + self.transdictobj[transition][0])
         print("Writing " + self.transdictobj[transition][1])
-        print("Moving R/W head to the " + self.transdictobj[transition][2])
+        if (self.transdictobj[transition][2] != None):
+            print("Moving R/W head to the " + self.transdictobj[transition][2])
 
         self.currentstate = self.transdictobj[transition][0]
         self.tape[self.headlocation] = self.transdictobj[transition][1]
@@ -84,12 +92,21 @@ class TuringMachine:
             self.headlocation += 1
         elif (self.transdictobj[transition][2] == "L"):
             self.headlocation = self.headlocation - 1
+        elif (self.transdictobj[transition][2] == None):
+            self.headlocation = self.headlocation
         
         print()
 
         if(self.currentstate == self.endstate):
             print("Acceptance state reached.")
             print("Your string is in the language!")
+            print("Final Tape: ")
+            self.tapedisplay()
+            exit()
+        
+        if(self.currentstate == self.rejectstate):
+            print("Rejection state reached.")
+            print("Your string is not in the language.")
             print("Final Tape: ")
             self.tapedisplay()
             exit()
