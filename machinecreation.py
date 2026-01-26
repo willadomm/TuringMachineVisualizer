@@ -17,13 +17,13 @@ def correctalphabetchecker(tapealphabet):
 def one1machine():
 
     listoftransitions = [] 
-    listofstates = ["q0", "q1"]
+    listofstates = ["q0", "q1" "r"]
     inputalphabet = ["0", "1"]
     tapealphabet = ["0", "1"]
 
     listoftransitions.append(["q0", "0", "q0", "0", "R"])
-    listoftransitions.append(["q0","1", "q1", "1", "R"])
-    listoftransitions.append(["q0", "_", "q0", "0", "R"])
+    listoftransitions.append(["q0","1", "q1", "1", None])
+    listoftransitions.append(["q0", "_", "r", "_", None])
 
     
     
@@ -32,7 +32,7 @@ def one1machine():
 
    
     
-    turingmachine.TuringMachine(listofstates,inputalphabet,tapealphabet,listoftransitions,"q0","q1",None, string)
+    turingmachine.TuringMachine(listofstates,inputalphabet,tapealphabet,listoftransitions,"q0","q1","r", string)
 
 
 def ancnbn():
@@ -133,11 +133,11 @@ def ancnbn():
             elif character == "c":
                 cboolean = True
             elif character == "a" and (bboolean == True or cboolean == True):
-                print("String must be of form a\u207fb\u207fc\u207f.")
+                print("String must be of form a\u1d50b\u207fc\u1d4f.")
                 correctstring = False
                 break
             elif character == "b" and cboolean == True:
-                print("String must be of form a\u207fb\u207fc\u207f.")
+                print("String must be of form a\u1d50b\u207fc\u1d4f.")
                 correctstring = False
                 break
         

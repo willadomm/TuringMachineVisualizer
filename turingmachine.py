@@ -50,14 +50,29 @@ class TuringMachine:
             tapecounter += 1
         self.tape = blanktape
 
+        print()
+
         print("Initial Tape: ")
         self.tapedisplay()
+
+        time.sleep(1)
 
         print("Enter a C instead of enter at any time to end the visualizer. (Very useful if the machine is not total)")
         print("Enter 'ff x' to fast forward through x transitions. ")
         print("Enter ff to skip to the end (Be careful when using a non-total TM!)")
 
-        time.sleep(2)
+        userinput = input("Press enter to begin: ")
+
+        if "ff" in userinput:
+            self.timecontrol = "ff"
+        if " " in userinput:
+            if userinput.split()[1].isnumeric():
+                self.fastfowardint = int(userinput.split()[1])
+            
+
+
+
+       
         
 
     def transitionsdict(self):
