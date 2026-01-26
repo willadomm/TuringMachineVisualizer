@@ -32,9 +32,6 @@ class TuringMachine:
             printable = printable[1:]
 
         printable = printable[::-1]
-
-
-        
         
         ontopprintstring = " " * (self.headlocation + 1)+ "^" + " " * (len(printable) -self.headlocation)
         print(printable + "\n" + ontopprintstring)
