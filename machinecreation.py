@@ -146,6 +146,60 @@ def ancnbn():
     turingmachine.TuringMachine(listofstates,inputalphabet,tapealphabet,listoftransitions,"s","t","r", string)
 
 
+def palindrome():
+
+    listoftransitions = []
+    listofstates = {"s, q1", "q2", "q3", "q4","q5", "t", "r"}
+    tapealphabet = ["a", "b"]
+    inputalphabet = ["|-", "-|", "_", "x"]
+
+    inputalphabet = inputalphabet.extend(tapealphabet)
+
+
+    # State s 
+    listoftransitions.append(("s", "a", "q1", "x", "R"))
+    listoftransitions.append(("s", "b", "q2", "x", "R"))
+    listoftransitions.append(("s", "x", "s", "x", "R"))
+    listoftransitions.append(("s", "_", "t", "_", None))
+    listoftransitions.append(("s", "-|", "t", "-|", None))
+
+    # State q1
+    listoftransitions.append(("q1", "a", "q1", "a", "R"))
+    listoftransitions.append(("q1", "b", "q1", "b", "R"))
+    listoftransitions.append(("q1", "x", "q1", "x", "R"))
+    listoftransitions.append(("q1", "_", "q3", "-|", "L"))
+    listoftransitions.append(("q1", "-|", "q3", "-|", "L"))
+
+    # State q2
+    listoftransitions.append(("q2", "a", "q2", "a", "R"))
+    listoftransitions.append(("q2", "b", "q2", "b", "R"))
+    listoftransitions.append(("q2", "x", "q2", "x", "R"))
+    listoftransitions.append(("q2", "_", "q4", "-|", "L"))
+    listoftransitions.append(("q2", "-|", "q4", "-|", "L"))
+
+    # State q3
+    listoftransitions.append(("q3", "|-", "s", "|-", "R"))
+    listoftransitions.append(("q3", "a", "q5", "x", "L"))
+    listoftransitions.append(("q3", "b", "r", "b", None))
+    listoftransitions.append(("q3", "x", "q3", "x", "L"))
+    
+    # State q4
+    listoftransitions.append(("q4", "|-", "s", "|-", "R"))
+    listoftransitions.append(("q4", "a", "r", "a", None))
+    listoftransitions.append(("q4", "b", "q5", "x", "L"))
+    listoftransitions.append(("q4", "x", "q4", "x", "L"))
+
+    #State q5
+    listoftransitions.append(("q5", "|-", "s", "|-", "R"))
+    listoftransitions.append(("q5", "a", "q5", "a", "L"))
+    listoftransitions.append(("q5", "b", "q5", "b", "L"))
+    listoftransitions.append(("q5", "x", "q5", "x", "L"))
+
+    string = correctalphabetchecker(tapealphabet)
+
+    turingmachine.TuringMachine(listofstates,inputalphabet,tapealphabet,listoftransitions,"s","t","r", string)
+    
+
 def apowerof2():
     listoftransitions = []
     listofstates = {"s, q10", "q2", "q1", "q11", "q4", "q5", "q6", "q12", "q8", "q9", "t", "r"}

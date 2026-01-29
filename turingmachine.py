@@ -129,7 +129,8 @@ class TuringMachine:
             self.tape.extend(newblankarray)
 
         if isinstance(self.fastfowardint, int):
-            self.fastfowardint = self.fastfowardint - 1
+            if self.fastfowardint > 0:
+                self.fastfowardint = self.fastfowardint - 1
             if self.fastfowardint == 0:
                 self.timecontrol = "N"
 
