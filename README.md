@@ -4,14 +4,14 @@ A Python-based interactive visualizer for Turing Machines that allows you to ste
 
 ## Overview
 
-This project implements a Turing Machine simulator with a step-by-step visualization interface. It comes with three pre-configured machines that recognize different formal languages, making it an excellent educational tool for understanding computation theory.
+This project implements a Turing Machine simulator with a step-by-step visualization interface. It comes with four pre-configured machines that recognize different formal languages, making it an excellent educational tool for understanding computation theory.
 
 ## Features
 
 - **Interactive step-through execution** - Watch each state transition in real-time
 - **Fast-forward modes** - Skip ahead by a specific number of steps or jump to the end
 - **Visual tape representation** - See the tape contents and read/write head position
-- **Three example machines** - Pre-built Turing Machines for common languages
+- **Four example machines** - Pre-built Turing Machines for common languages
 - **Input validation** - Ensures strings are in the correct alphabet
 - **User-controlled pacing** - Press enter to advance or use fast-forward commands
 
@@ -34,6 +34,12 @@ This project implements a Turing Machine simulator with a step-by-step visualiza
 
 **Example accepted strings:** `a`, `aa`, `aaaa`, `aaaaaaaa`  
 **Example rejected strings:** `aaa`, `aaaaa`, `aaaaaa`
+
+### 4. Palindrome Machine
+**Language:** Any palindrome over the alphabet {a, b}*
+
+**Example accepted strings:** `a`, `b`, `aba`, `abba`, `aabaa`, `babbab`  
+**Example rejected strings:** `ab`, `aab`, `abab`, `aaab`
 
 ## Installation
 
@@ -61,9 +67,10 @@ When the visualizer starts:
 
 ```
 Welcome to the Turing Machine Visualizer. Enter the corresponding number to visualize that TM.
-1. L = any string in the alphabet (0, 1)˟ that contains at least one 1.
+1. L = any string in the alphabet {0, 1}˟ that contains at least one 1.
 2. L = any string of the form aⁿbⁿcⁿ.
 3. L = a repeated a power of two times.
+4. L = any palindrome in the language of {a, b}˟.
 Type Here: 1
 
 Please enter the string to be determined by the machine: 0101
@@ -80,7 +87,8 @@ Press enter to begin:
 
 - **`main.py`** - Entry point and menu interface
 - **`turingmachine.py`** - Core Turing Machine class implementation
-- **`machinecreation.py`** - Definitions of the three example machines
+- **`machinecreation.py`** - Definitions of the four example machines
+- **`customtm.py`** - (Work in progress) Custom Turing Machine builder
 
 ## How It Works
 
