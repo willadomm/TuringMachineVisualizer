@@ -14,6 +14,13 @@ def customtm():
         listofstates.append(userinput)
     
     userinput = None
+    tapealphabet = 
+
+    print("Enter the tape alphabet of your machine, 1 by 1. The first state should be the starting state, and the second state should be the accept state.  ")
+
+    while userinput != "":
+        userinput = input("Enter character here: ")
+
     
 
     inputalphabet = []

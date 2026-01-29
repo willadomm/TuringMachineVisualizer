@@ -28,8 +28,6 @@ def main():
             machinecreation.apowerof2()
         case "4":
             machinecreation.palindrome()
-        case "5":
-            customtm.customtm()
     
 
 
