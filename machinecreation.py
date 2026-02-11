@@ -1,5 +1,5 @@
 import turingmachine
-import json
+import commentjson
 
 def correctalphabetchecker(tapealphabet):
     properstring = False
@@ -15,7 +15,7 @@ def correctalphabetchecker(tapealphabet):
 
 def customtm():
     with open('tms.json', 'r') as customstmsfile:
-        data = json.load(customstmsfile)
+        data = commentjson.load(customstmsfile)
 
     userinput = input("Type the index of the TM you would like to visualize: ")
 
