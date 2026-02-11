@@ -11,6 +11,9 @@ Adding the ability to input TMs on the tape, for simulating recursively enumerab
 Letting the user go backward through steps, for more clarity in how the string is shaped on the tape. 
 
 
+
+
+
 Make sure to install commentjson with: pip install commentjson 
 
 To run, run main.py
