@@ -2,6 +2,8 @@ import turingmachine
 import machinecreation
 
 
+#Not functional
+
 def customtm():
 
     listofstates = []

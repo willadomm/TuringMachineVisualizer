@@ -1,0 +1,35 @@
+//Type your TM here in the format of the example:
+[
+    [
+    // List of states
+    ["q0", "q1", "r"], 
+
+    //Input Alphabet (Initial Symbols allowed on the tape)
+    ["0", "1"], 
+
+    /* Tape Alphabet 
+    (Internal markings used for calculating, along with the input alphabet)
+    Make sure to add leftend, rightend, and blank symbols
+    */
+    [ "0", "1"], 
+
+    /* List of transitions. 
+    Five item list, first item is the current state
+    Second item is current character on tape
+    Third item is state to be transitioned to
+    Fourth item is character to be written
+    Fifth item is the direction of the R/W head, written as R or L (or _ if in edge cases you'd like the TM to not move the head)
+    */
+    [["q0", "0", "q0", "0", "R"], ["q0", "1", "q1", "1", null], ["q0", "_", "r", "_", null]], 
+
+    // Start state
+    "q0", 
+
+    //Accept state
+    "q1", 
+    
+    //Reject state
+    "r"
+    ]
+]
+

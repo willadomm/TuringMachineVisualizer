@@ -7,7 +7,7 @@ def main():
     print("Welcome to the Turing Machine Visualizer. Enter the corresponding number to visualize that TM.")
     print("1. L = any string in the alphabet {0, 1}\u02df that contains at least one 1. ")
     print("2. L = any string of the form a\u207fb\u207fc\u207f.")
-    print("3. L = a repeated a power of two times.")
+    print("3. L = 'a' repeated a power of two times.")
     print("4. L = any palindrome in the language of {a, b}\u02df. ")
     
     
@@ -28,6 +28,8 @@ def main():
             machinecreation.apowerof2()
         case "4":
             machinecreation.palindrome()
+        case "5":
+            machinecreation.customtm()
     
 
 

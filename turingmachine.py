@@ -1,4 +1,5 @@
 import time
+import json
 
 class TuringMachine:
     def __init__(self, states, inputalphabet, tapealphabet, transitions, startstate, endstate, rejectstate, startingstring):
@@ -21,6 +22,7 @@ class TuringMachine:
         self.transitionsdict()
         self.createtape()
         self.mainloop()
+
     
     def tapedisplay(self):
         printable = ""
@@ -133,6 +135,7 @@ class TuringMachine:
                 self.fastfowardint = self.fastfowardint - 1
             if self.fastfowardint == 0:
                 self.timecontrol = "N"
+                self.fastfowardint = None
 
         
         
@@ -142,10 +145,15 @@ class TuringMachine:
         if self.timecontrol == "C":
             print("Halted by user.")
             exit()
+
         elif " " in self.timecontrol:
             if self.timecontrol.split()[1].isnumeric():
                 self.fastfowardint = int(self.timecontrol.split()[1])
                 self.timecontrol = "ff"
+        
+        elif "ff" in self.timecontrol:
+            self.timecontrol = "ff"
+            
         
         print()
         self.mainloop()

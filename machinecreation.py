@@ -1,5 +1,5 @@
 import turingmachine
-
+import json
 
 def correctalphabetchecker(tapealphabet):
     properstring = False
@@ -13,11 +13,26 @@ def correctalphabetchecker(tapealphabet):
 
     return stringinput
 
+def customtm():
+    with open('tms.json', 'r') as customstmsfile:
+        data = json.load(customstmsfile)
+
+    userinput = input("Type the index of the TM you would like to visualize: ")
+
+    tmindex = int(userinput[0])
+
+    string = correctalphabetchecker(data[tmindex][2])
+
+    turingmachine.TuringMachine(data[tmindex][0], data[tmindex][1], data[tmindex][2], data[tmindex][3],data[tmindex][4], data[tmindex][5], data[tmindex][6], string)
+
+
+
+   
 
 def one1machine():
 
     listoftransitions = [] 
-    listofstates = ["q0", "q1" "r"]
+    listofstates = ["q0", "q1", "r"]
     inputalphabet = ["0", "1"]
     tapealphabet = ["0", "1"]
 
@@ -28,11 +43,12 @@ def one1machine():
     
     
     string = correctalphabetchecker(tapealphabet)
-    
 
    
     
     turingmachine.TuringMachine(listofstates,inputalphabet,tapealphabet,listoftransitions,"q0","q1","r", string)
+
+    
 
 
 def ancnbn():
