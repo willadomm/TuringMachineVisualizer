@@ -1,6 +1,5 @@
 
 import machinecreation
-import customtm
 
 def main():
     
@@ -9,6 +8,7 @@ def main():
     print("2. L = any string of the form a\u207fb\u207fc\u207f.")
     print("3. L = 'a' repeated a power of two times.")
     print("4. L = any palindrome in the language of {a, b}\u02df. ")
+    print("5. Use a custom TM in the json file")
     
     
     choiceint = " "
